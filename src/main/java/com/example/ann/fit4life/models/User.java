@@ -22,6 +22,14 @@ public class User {
     @Size(min=4, max=15, message = "Password must be 4-15 characters")
     private String password;
 
+    @NotNull
+    private String firstName;
+
+    @NotNull
+    private String lastName;
+
+    private Address address;
+
     public User (){
 
     }
@@ -29,6 +37,8 @@ public class User {
     public User (String email, String password){
         this.email=email;
         this.password=password;
+        this.firstName=firstName;
+        this.lastName=lastName;
     }
 
     public String getEmail(){
@@ -47,5 +57,19 @@ public class User {
     }
     public int getId(){
         return id;
+    }
+
+    public String getFirstName(){
+        return firstName;
+    }
+    public void setFirstName(String firstName){
+        this.firstName=firstName;
+    }
+    public String getLastName(){
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 }
