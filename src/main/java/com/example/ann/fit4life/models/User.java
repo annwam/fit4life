@@ -1,9 +1,8 @@
 package com.example.ann.fit4life.models;
 
-import org.springframework.data.annotation.Id;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
+
+import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -14,20 +13,25 @@ public class User {
     @GeneratedValue
     private int id;
 
-    @NotNull
-    @Email
+//    @NotNull
+//    @Email
     private String email;
 
-    @NotNull
-    @Size(min=4, max=15, message = "Password must be 4-15 characters")
+//    @NotNull
+//    @Size(min=4, max=15, message = "Password must be 4-15 characters")
     private String password;
 
-    @NotNull
+//    @NotNull
+//    @Size(min=4, max=15, message = "Password must be 4-15 characters")
+    private String verifyPassword;
+
+//    @NotNull
     private String firstName;
 
-    @NotNull
+//    @NotNull
     private String lastName;
 
+    @OneToOne
     private Address address;
 
     public User (){
@@ -39,6 +43,14 @@ public class User {
         this.password=password;
         this.firstName=firstName;
         this.lastName=lastName;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
     public String getEmail(){
@@ -71,5 +83,13 @@ public class User {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public String getVerifyPassword() {
+        return verifyPassword;
+    }
+
+    public void setVerifyPassword(String verifyPassword) {
+        this.verifyPassword = verifyPassword;
     }
 }

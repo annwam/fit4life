@@ -1,8 +1,16 @@
 package com.example.ann.fit4life.models;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
+@Entity
 public class Address {
+    @Id
+    @GeneratedValue
+    private int id;
+
     @NotNull
     private String streetAddress;
 
