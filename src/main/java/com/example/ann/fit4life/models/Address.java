@@ -11,18 +11,18 @@ public class Address {
     @GeneratedValue
     private int id;
 
-    @NotNull
+//    @NotNull
     private String streetAddress;
 
     private String address2;
 
-    @NotNull
+//    @NotNull
     private String city;
 
-    @NotNull
+//    @NotNull
     private String state;
 
-    @NotNull
+//    @NotNull
     private String zipcode;
 
     public Address(){}

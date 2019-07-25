@@ -31,8 +31,13 @@ public class UserController {
 
     @RequestMapping (value = "signup", method = RequestMethod.POST)
     public String processSignUpForm(Model model, @ModelAttribute @Valid User user, Errors errors){
+//       System.out.println( "ssssssssssssssssss?" + user.getFirstName());
+        if(errors.hasErrors()){
+            return "signUp";
+        }
+
         userDao.save(user);
-        return "signUp";
+        return "login";
     }
 
     @RequestMapping (value="login", method = RequestMethod.GET)
@@ -40,6 +45,25 @@ public class UserController {
         model.addAttribute("title","Log in");
         model.addAttribute(new LoginForm());
         return "login";
+    }
+
+    @RequestMapping (value = "login", method = RequestMethod.POST)
+    public String processLoginForm(Model model, @ModelAttribute @Valid LoginForm loginForm, Errors errors){
+
+
+
+        User thisUser =userDao.findByEmail(loginForm.getEmail());
+
+        if (!thisUser.equals(null)) {
+            if (loginForm.getPassword().equals(thisUser.getPassword()))
+            return "home";
+        }
+//        System.out.println("ssssssssssssssssssssssss");
+
+        return "login";
+
 
     }
+
+
 }

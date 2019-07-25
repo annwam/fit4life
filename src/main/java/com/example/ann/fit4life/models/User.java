@@ -6,6 +6,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import org.springframework.validation.annotation.Validated;
 
 @Entity
 public class User {
@@ -13,25 +14,26 @@ public class User {
     @GeneratedValue
     private int id;
 
-//    @NotNull
-//    @Email
+    @NotNull
+    @Email( message = "Shit it works something like that i was kidding okay whatever")
     private String email;
 
-//    @NotNull
-//    @Size(min=4, max=15, message = "Password must be 4-15 characters")
+    @NotNull
+    @Size(min=4, max=15, message = "Password must be 4-15 characters")
     private String password;
 
-//    @NotNull
-//    @Size(min=4, max=15, message = "Password must be 4-15 characters")
+    @NotNull
+    @Size(min=4, max=15, message = "Password must be 4-15 characters")
     private String verifyPassword;
 
-//    @NotNull
+    @NotNull
     private String firstName;
 
-//    @NotNull
+    @NotNull
     private String lastName;
 
     @OneToOne
+    @JoinColumn(name = "address_id")
     private Address address;
 
     public User (){
