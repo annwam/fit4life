@@ -1,6 +1,8 @@
 package com.example.ann.fit4life.models.forms;
 
-public class Profile{
+import java.util.List;
+
+public class ProfilePost {
 
     private String goal;
     private int weight;
@@ -8,17 +10,27 @@ public class Profile{
     private int waistInches;
     private int chestInches;
     private int thighInches;
+    List<ProgressForm> progressFormList;
 
-    public Profile (){}
+    public ProfilePost(){}
 
-    public Profile (String goal, int weight, int armInches, int chestInches, int waistInches, int thighInches){
+    public ProfilePost(String goal, int weight, int armInches, int chestInches, int waistInches, int thighInches, List<ProgressForm> progressFormList){
         this.goal = goal;
         this.armInches=armInches;
         this.chestInches=chestInches;
         this.waistInches=waistInches;
         this.thighInches=thighInches;
         this.weight=weight;
+        this.progressFormList=progressFormList;
 
+    }
+
+    public List<ProgressForm> getProgressFormList() {
+        return progressFormList;
+    }
+
+    public void setProgressFormList(List<ProgressForm> progressFormList) {
+        this.progressFormList = progressFormList;
     }
 
     public String getGoal() {

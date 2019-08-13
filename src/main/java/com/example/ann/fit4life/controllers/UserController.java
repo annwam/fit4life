@@ -21,6 +21,9 @@ public class UserController {
    @Autowired
    private UserDao userDao;
 
+   @Autowired
+   private HomeController homeController;
+
 
     @RequestMapping (value = "signup", method = RequestMethod.GET)
     public String displaySignUpForm(Model model){
@@ -50,15 +53,16 @@ public class UserController {
     @RequestMapping (value = "login", method = RequestMethod.POST)
     public String processLoginForm(Model model, @ModelAttribute @Valid LoginForm loginForm, Errors errors){
 
-
-
         User thisUser =userDao.findByEmail(loginForm.getEmail());
 
-        if (!thisUser.equals(null)) {
-            if (loginForm.getPassword().equals(thisUser.getPassword()))
-            return "home";
+        if (thisUser!=null) {
+            if (loginForm.getPassword().equals(thisUser.getPassword())){
+//                model.addAttribute("user",thisUser);
+//                model.addAttribute("topic", "my profile");
+//                return "profile";
+               return homeController.displayProfilePage(model,loginForm.getEmail());
+            }
         }
-//        System.out.println("ssssssssssssssssssssssss");
 
         return "login";
 
