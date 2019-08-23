@@ -11,9 +11,6 @@
     <link rel="stylesheet" type="text/css" media="all" href="../static/css/w3-theme-blue-grey.css" th:href="@{/css/w3-theme-blue-grey.css}"/>
     <link rel="stylesheet" type="text/css" media="all" href="../static/css/font-awesome.min.css" th:href="@{/css/font-awesome.min.css}"/>
     <link rel="stylesheet" type="text/css" media="all" href="../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}"/>
-<!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">-->
-    <!--    <title th:text="${title}">Default Title</title>-->
-    <!--    <link href="../static/css/styles.css" rel="stylesheet"/>-->
 
     <style>
 html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
@@ -69,26 +66,17 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
                         <div class="w3-container w3-padding">
                             <h6 class="w3-opacity">Social Media template by w3.css</h6>
                             <form th:object="${profilePost}" method="post" th:action="@{/fit4life/profile}">
-                                <table class="table">
+                                <div class="form-group col-md-6">
+                                    <input th:field="*{weight}" class="form-control" placeholder="weight"/>
+                                    <input th:field="*{armInches}" class="form-control" placeholder="Bicep inches"/>
+                                    <input th:field="*{waistInches}" class="form-control" placeholder="waist inches"/>
+                                    <input th:field="*{chestInches}" class="form-control" placeholder="chest inches"/>
+                                    <input th:field="*{thighInches}" class="form-control" placeholder="thigh inches"/>
+                                    <input th:field="*{goal}" class="form-control" placeholder="goals"/>
 
-                                    <tr>
-                                        <th>Arms</th>
-<!--                                        <th></th>-->
-<!--                                        <th></th>-->
-                                    </tr>
-
-<!--                                    <tr th:each="cheese : ${cheeses}">-->
-                                        <td th:object="${post.armInches}"></td>
-<!--                                        <td th:text="${cheese.description}"></td>-->
-<!--                                        <td th:text="${cheese.category.name}"></td>-->
-<!--                                    </tr>-->
-
-                                </table>
+                                </div>
 
                             </form>
-
-
-
                             <button type="button" class="w3-button w3-theme"><i class="fa fa-pencil"></i> &nbsp;Post</button>
                         </div>
                     </div>
@@ -140,31 +128,5 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
 </div>
 <br>
 
-<!-- Footer -->
-
-<!--<script>-->
-<!--// Accordion-->
-<!--function myFunction(id) {-->
-<!--  var x = document.getElementById(id);-->
-<!--  if (x.className.indexOf("w3-show") == -1) {-->
-<!--    x.className += " w3-show";-->
-<!--    x.previousElementSibling.className += " w3-theme-d1";-->
-<!--  } else {-->
-<!--    x.className = x.className.replace("w3-show", "");-->
-<!--    x.previousElementSibling.className =-->
-<!--    x.previousElementSibling.className.replace(" w3-theme-d1", "");-->
-<!--  }-->
-<!--}-->
-
-<!--// Used to toggle the menu on smaller screens when clicking on the menu button-->
-<!--function openNav() {-->
-<!--  var x = document.getElementById("navDemo");-->
-<!--  if (x.className.indexOf("w3-show") == -1) {-->
-<!--    x.className += " w3-show";-->
-<!--  } else {-->
-<!--    x.className = x.className.replace(" w3-show", "");-->
-<!--  }-->
-<!--}-->
-<!--</script>-->
 </body>
 </html>

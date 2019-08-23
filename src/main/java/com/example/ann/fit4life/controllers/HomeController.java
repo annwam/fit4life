@@ -22,6 +22,7 @@ public class HomeController {
         return "home";
     }
 
+//    TODO
 
 //    @RequestMapping(value="profile", method = RequestMethod.GET)
 //    public String displayProfile(Model model){
@@ -36,16 +37,19 @@ public class HomeController {
     public  String displayProfilePage(Model model, String email){
 
         model.addAttribute("user",userDao.findByEmail(email));
+        model.addAttribute(new ProfilePost());
         model.addAttribute("topic", "my profile");
         return "profile";
     }
 
-    @RequestMapping(value = "profile", method= RequestMethod.GET)
-    public String displayProfilePosts(Model model){
-        model.addAttribute("title","post");
-        model.addAttribute(new ProfilePost());
-
-        return "profile";
-    }
+//    @RequestMapping(value = "profile", method= RequestMethod.GET)
+//    public String displayProfilePost(Model model){
+//        System.out.println("sssssssssssssssssssssssssssss");
+//
+//        model.addAttribute("title","post");
+//        model.addAttribute(new ProfilePost());
+//
+//        return "profile";
+//    }
 
 }
