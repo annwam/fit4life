@@ -1,19 +1,23 @@
 package com.example.ann.fit4life.controllers;
 
 import com.example.ann.fit4life.data.UserDao;
-import com.example.ann.fit4life.models.User;
 import com.example.ann.fit4life.models.forms.ProfilePost;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.validation.Errors;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping ("fit4life")
 public class HomeController {
     @Autowired
     private UserDao userDao;
+
+    @Autowired
+    private UserController userController;
 
 
 
@@ -42,14 +46,30 @@ public class HomeController {
         return "profile";
     }
 
-//    @RequestMapping(value = "profile", method= RequestMethod.GET)
-//    public String displayProfilePost(Model model){
-//        System.out.println("sssssssssssssssssssssssssssss");
+//    @RequestMapping (value = "signup", method = RequestMethod.POST)
+//    public String processSignUpForm(Model model, @ModelAttribute @Valid User user, Errors errors){
+////       System.out.println( "ssssssssssssssssss?" + user.getFirstName());
+//        if(errors.hasErrors()){
+//            return "signUp";
+//        }
 //
-//        model.addAttribute("title","post");
-//        model.addAttribute(new ProfilePost());
-//
-//        return "profile";
+//        userDao.save(user);
+//        return "login";
 //    }
+
+    @RequestMapping (value = "profile/{email}", method= RequestMethod.POST)
+    public String processProfilePost(Model model, @ModelAttribute @Valid ProfilePost profilePost, @PathVariable String email, Errors errors){
+
+        //Save profilepost
+        System.out.println(profilePost.getUserEmail());
+
+        System.out.println("lllllllllllllllllllllllllllllllllllllll");
+        System.out.println(email);
+//        User this_user=userDao.findById();
+
+        //Now we can redirect to login form
+        return userController.displayLoginForm(model);
+    }
+
 
 }

@@ -60,6 +60,7 @@ public class UserController {
 //                model.addAttribute("user",thisUser);
 //                model.addAttribute("topic", "my profile");
 //                return "profile";
+
                return homeController.displayProfilePage(model,loginForm.getEmail());
             }
         }

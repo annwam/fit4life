@@ -1,16 +1,18 @@
 package com.example.ann.fit4life.models.forms;
 
+import javax.validation.constraints.Email;
 import java.util.List;
 
 public class ProfilePost {
 
     private String goal;
+    private String userEmail;
     private int weight;
     private int armInches;
     private int waistInches;
     private int chestInches;
     private int thighInches;
-    List<ProgressForm> progressFormList;
+    private List<ProgressForm> progressFormList;
 
     public ProfilePost(){}
 
@@ -79,5 +81,12 @@ public class ProfilePost {
 
     public void setThighInches(int thighInches) {
         this.thighInches = thighInches;
+    }
+    public String getUserEmail() {
+        return userEmail;
+    }
+
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
     }
 }

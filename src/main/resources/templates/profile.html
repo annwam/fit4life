@@ -64,10 +64,15 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
                 <div class="w3-col m12">
                     <div class="w3-card w3-round w3-white">
                         <div class="w3-container w3-padding">
-                            <h6 class="w3-opacity">Social Media template by w3.css</h6>
-                            <form th:object="${profilePost}" method="post" th:action="@{/fit4life/profile}">
+                            <span class="w3-right w3-opacity"></span>
+
+                            <h6 class="w3-opacity">update your progress</h6>
+<!--                            th:action="@{/fit4life/login}"-->
+                            <form method="post" th:action="@{/fit4life/profile/} + ${user.email}" th:object="${profilePost}">
                                 <div class="form-group col-md-6">
                                     <input th:field="*{weight}" class="form-control" placeholder="weight"/>
+<!--                                    Hinden input taking user email-->
+                                    <input type="hidden" name="userEmail" th:value="${user.email}"/>
                                     <input th:field="*{armInches}" class="form-control" placeholder="Bicep inches"/>
                                     <input th:field="*{waistInches}" class="form-control" placeholder="waist inches"/>
                                     <input th:field="*{chestInches}" class="form-control" placeholder="chest inches"/>
@@ -75,9 +80,18 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
                                     <input th:field="*{goal}" class="form-control" placeholder="goals"/>
 
                                 </div>
-
+<!--                                TODO #2 Add an input loop for the progress test-->
+<!--                                <div>-->
+<!--                                    <label th:for="type">Fit test</label>-->
+<!--                                    <select name="categoryId">-->
+<!--                                        <option th:each="category : ${categories}"-->
+<!--                                                th:text="${category.name}"-->
+<!--                                                th:value="${category.id}"></option>-->
+<!--                                    </select>-->
+<!--                                </div>-->
+<!--                                <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>-->
+                                <button class="w3-button w3-theme" type="submit"><i class="fa fa-pencil"></i> Post</button>
                             </form>
-                            <button type="button" class="w3-button w3-theme"><i class="fa fa-pencil"></i> &nbsp;Post</button>
                         </div>
                     </div>
                 </div>
