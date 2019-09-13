@@ -17,7 +17,12 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
 </style>
 </head>
 <body class="w3-theme-l5">
+
+<head th:replace="fragments :: head"></head>
+
 <div th:replace="fragments :: navigation"></div>
+
+<!--<h1 th:text="${user.profilePosts}">Default Title</h1>-->
 
 
 <!-- Page Container -->
@@ -98,16 +103,34 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
             </div>
 <!--            to-->
 
-
-
-
-            <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
-                <span class="w3-right w3-opacity">1 min</span>
+<!--            <table class="table"th:each="profilePost : ${user.profilePosts}">-->
+<!--            <tr>-->
+<!--                <td th:text="${profilePost.goal}"></td>-->
+<!--            </tr>-->
+<!--                <tr>-->
+<!--                    <td th:text="${profilePost.weight}"></td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td th:text="${profilePost.thighInches}"></td>-->
+<!--                </tr>-->
+<!--            </table>-->
+<!--            th:each="profilePost : ${user.profilePosts}"-->
+            <div th:each="profilePost : ${user.profilePosts}">
+            <div class="w3-container w3-card w3-white w3-round w3-margin" ><br>
+                <span class="w3-right w3-opacity" th:text="${profilePost.date}">1 min</span>
                 <h4>Progress Test</h4><br>
-                <hr class="w3-clear">
+                <p th:text="'Weight: '+${profilePost.weight}"></p>
+                <p th:text="'Goal: '+${profilePost.goal}"></p>
+                <p th:text="'Biceps: '+${profilePost.armInches}"></p>
+                <p th:text="'Thighs: '+${profilePost.thighInches}"></p>
+                <p th:text="'Waist: '+${profilePost.waistInches}"></p>
 
+
+
+                <hr class="w3-clear">
                 <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i> &nbsp;Like</button>
                 <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i> &nbsp;Comment</button>
+            </div>
             </div>
 
             <div class="w3-container w3-card w3-white w3-round w3-margin"><br>

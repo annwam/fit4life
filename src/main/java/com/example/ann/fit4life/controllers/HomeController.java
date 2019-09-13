@@ -1,6 +1,8 @@
 package com.example.ann.fit4life.controllers;
 
+import com.example.ann.fit4life.data.PostDao;
 import com.example.ann.fit4life.data.UserDao;
+import com.example.ann.fit4life.models.User;
 import com.example.ann.fit4life.models.forms.ProfilePost;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,6 +20,9 @@ public class HomeController {
 
     @Autowired
     private UserController userController;
+
+    @Autowired
+    private PostDao postDao;
 
 
 
@@ -62,13 +67,18 @@ public class HomeController {
 
         //Save profilepost
         System.out.println(profilePost.getUserEmail());
+        //Saves profilepost to db
+        postDao.save(profilePost);
 
-        System.out.println("lllllllllllllllllllllllllllllllllllllll");
-        System.out.println(email);
-//        User this_user=userDao.findById();
+        //pull user from db that sent post
+        User this_user=userDao.findByEmail(profilePost.getUserEmail());
+
+        //save posts to the user
+        this_user.setProfilePosts(profilePost);
+
 
         //Now we can redirect to login form
-        return userController.displayLoginForm(model);
+        return displayProfilePage(model, profilePost.getUserEmail());
     }
 
 
