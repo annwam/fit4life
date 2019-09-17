@@ -26,12 +26,12 @@ public class HomeController {
 
 
 
-    @RequestMapping(value="home", method = RequestMethod.GET)
+    @RequestMapping(value="", method = RequestMethod.GET)
     public String homePage(Model model){
         return "home";
     }
 
-//    TODO
+//
 
 //    @RequestMapping(value="profile", method = RequestMethod.GET)
 //    public String displayProfile(Model model){
@@ -65,19 +65,19 @@ public class HomeController {
     @RequestMapping (value = "profile/{email}", method= RequestMethod.POST)
     public String processProfilePost(Model model, @ModelAttribute @Valid ProfilePost profilePost, @PathVariable String email, Errors errors){
 
-        //Save profilepost
+        //TODO Save profilepost
         System.out.println(profilePost.getUserEmail());
-        //Saves profilepost to db
+        //TODO Save profilepost to db
         postDao.save(profilePost);
 
-        //pull user from db that sent post
+        //TODO pull user from db that sent post
         User this_user=userDao.findByEmail(profilePost.getUserEmail());
 
-        //save posts to the user
+        //TODO save posts to the user
         this_user.setProfilePosts(profilePost);
 
 
-        //Now we can redirect to login form
+        //TODO Now we can redirect to login form
         return displayProfilePage(model, profilePost.getUserEmail());
     }
 

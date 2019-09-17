@@ -1,5 +1,6 @@
 package com.example.ann.fit4life.controllers;
 
+import com.example.ann.fit4life.data.AddressDao;
 import com.example.ann.fit4life.data.UserDao;
 import com.example.ann.fit4life.models.Address;
 import com.example.ann.fit4life.models.User;
@@ -25,6 +26,7 @@ public class UserController {
    private HomeController homeController;
 
 
+
     @RequestMapping (value = "signup", method = RequestMethod.GET)
     public String displaySignUpForm(Model model){
         model.addAttribute("title","Sign Up");
@@ -34,13 +36,12 @@ public class UserController {
 
     @RequestMapping (value = "signup", method = RequestMethod.POST)
     public String processSignUpForm(Model model, @ModelAttribute @Valid User user, Errors errors){
-//       System.out.println( "ssssssssssssssssss?" + user.getFirstName());
         if(errors.hasErrors()){
             return "signUp";
         }
 
         userDao.save(user);
-        return "login";
+        return displayLoginForm (model);
     }
 
     @RequestMapping (value="login", method = RequestMethod.GET)

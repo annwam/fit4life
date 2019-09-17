@@ -34,24 +34,12 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
             <!-- ProfilePost -->
             <div class="w3-card w3-round w3-white">
                 <div th:object="${user}" class="w3-container">
-                    <h4 class="w3-center">My Profile</h4>
+                    <h1 class="w3-center">My Profile</h1>
+<!--                    TODO #4 Implement User's Image -->
+                    <img class="mb-4" src="../images/bootstrap-solid.svg" alt="" width="72" height="72" th:src="@{images/bootstrap-solid.svg}"/>
 
-                <h1 th:text="${user.firstName}+' '+${user.lastName}">Default Title</h1>
+                    <h4 th:text="${user.firstName}+' '+${user.lastName}">Default Title</h4>
 
-                <!--                <table class="table">-->
-
-<!--                    <tr>-->
-<!--                        <th>Name</th>-->
-<!--                        <th>Email</th>-->
-
-<!--                    </tr>-->
-<!--                   <p> th:text="${title}">Default Title</p>-->
-<!--&lt;!&ndash;                    <tr th:each="user : ${users}">&ndash;&gt;-->
-                        <td th:object="${user.firstName}"></td>
-<!--&lt;!&ndash;                        <td th:text="${user.email}"></td>&ndash;&gt;-->
-<!--                    </tr>-->
-
-<!--                </table>-->
                     <br>
 
                 </div>
@@ -71,12 +59,13 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
                         <div class="w3-container w3-padding">
                             <span class="w3-right w3-opacity"></span>
 
-                            <h6 class="w3-opacity">update your progress</h6>
-<!--                            th:action="@{/fit4life/login}"-->
+                            <h4 th:text="'Welcome '+ ${user.firstName}+'!'">Default Title</h4>
+
+                            <h6 class="w3-opacity">Do you want to update your progress?</h6>
                             <form method="post" th:action="@{/fit4life/profile/} + ${user.email}" th:object="${profilePost}">
                                 <div class="form-group col-md-6">
-                                    <input th:field="*{weight}" class="form-control" placeholder="weight"/>
-<!--                                    Hinden input taking user email-->
+                                    <input th:field="*{weight}" class="form-control" placeholder="weight in lbs"/>
+<!--                                    Hidden input taking user email-->
                                     <input type="hidden" name="userEmail" th:value="${user.email}"/>
                                     <input th:field="*{armInches}" class="form-control" placeholder="Bicep inches"/>
                                     <input th:field="*{waistInches}" class="form-control" placeholder="waist inches"/>
@@ -85,74 +74,35 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
                                     <input th:field="*{goal}" class="form-control" placeholder="goals"/>
 
                                 </div>
-<!--                                TODO #2 Add an input loop for the progress test-->
-<!--                                <div>-->
-<!--                                    <label th:for="type">Fit test</label>-->
-<!--                                    <select name="categoryId">-->
-<!--                                        <option th:each="category : ${categories}"-->
-<!--                                                th:text="${category.name}"-->
-<!--                                                th:value="${category.id}"></option>-->
-<!--                                    </select>-->
-<!--                                </div>-->
-<!--                                <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>-->
+<!--                                TODO #2 Add an input loop for the Fitness test with push ups sit ups and cardio-->
+
                                 <button class="w3-button w3-theme" type="submit"><i class="fa fa-pencil"></i> Post</button>
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
-<!--            to-->
 
-<!--            <table class="table"th:each="profilePost : ${user.profilePosts}">-->
-<!--            <tr>-->
-<!--                <td th:text="${profilePost.goal}"></td>-->
-<!--            </tr>-->
-<!--                <tr>-->
-<!--                    <td th:text="${profilePost.weight}"></td>-->
-<!--                </tr>-->
-<!--                <tr>-->
-<!--                    <td th:text="${profilePost.thighInches}"></td>-->
-<!--                </tr>-->
-<!--            </table>-->
-<!--            th:each="profilePost : ${user.profilePosts}"-->
             <div th:each="profilePost : ${user.profilePosts}">
             <div class="w3-container w3-card w3-white w3-round w3-margin" ><br>
-                <span class="w3-right w3-opacity" th:text="${profilePost.date}">1 min</span>
-                <h4>Progress Test</h4><br>
+                <span class="w3-right w3-opacity" th:text="${profilePost.date}">Date</span>
+                <h4>Progress Update</h4><br>
                 <p th:text="'Weight: '+${profilePost.weight}"></p>
                 <p th:text="'Goal: '+${profilePost.goal}"></p>
                 <p th:text="'Biceps: '+${profilePost.armInches}"></p>
                 <p th:text="'Thighs: '+${profilePost.thighInches}"></p>
                 <p th:text="'Waist: '+${profilePost.waistInches}"></p>
 
-
-
                 <hr class="w3-clear">
-                <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i> &nbsp;Like</button>
+
+<!--                TODO #1 Add a functionality for client to make comments using the comment button-->
+
                 <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i> &nbsp;Comment</button>
             </div>
             </div>
 
-            <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
-                <img src="./W3.CSS Template_files/avatar5.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
-                <span class="w3-right w3-opacity">16 min</span>
-                <h4>Jane Doe</h4><br>
-                <hr class="w3-clear">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i> &nbsp;Like</button>
-                <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i> &nbsp;Comment</button>
-            </div>
 
-            <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
-                <span class="w3-right w3-opacity">32 min</span>
-                <h4>Angie Jane</h4><br>
-                <hr class="w3-clear">
-                <p>Have you seen this?</p>
-                <img src="./W3.CSS Template_files/nature.jpg" style="width:100%" class="w3-margin-bottom">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i> &nbsp;Like</button>
-                <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i> &nbsp;Comment</button>
-            </div>
+
 
             <!-- End Middle Column -->
         </div>

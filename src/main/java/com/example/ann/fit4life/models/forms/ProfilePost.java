@@ -23,11 +23,11 @@ public class ProfilePost {
 
     private String goal;
     private String userEmail;
-    private int weight;
-    private int armInches;
-    private int waistInches;
-    private int chestInches;
-    private int thighInches;
+    private String weight;
+    private String armInches;
+    private String waistInches;
+    private String chestInches;
+    private String thighInches;
     private String date;
     //private List<ProgressForm> progressFormList;
 
@@ -37,13 +37,15 @@ public class ProfilePost {
                 this.date=dtf.format(now);
     }
 
-    public ProfilePost(String goal, int weight, int armInches, int chestInches, int waistInches, int thighInches, List<ProgressForm> progressFormList) {
+    public ProfilePost(String goal, String weight, String armInches, String chestInches, String waistInches, String thighInches, List<ProgressForm> progressFormList) {
         this.goal = goal;
         this.armInches = armInches;
         this.chestInches = chestInches;
         this.waistInches = waistInches;
         this.thighInches = thighInches;
         this.weight = weight;
+
+//        TODO #3 Implement a fit test with sit ups, push ups and cardio
         //this.progressFormList = progressFormList;
 
     }
@@ -73,43 +75,43 @@ public class ProfilePost {
         this.goal = goal;
     }
 
-    public int getWeight() {
+    public String getWeight() {
         return weight;
     }
 
-    public void setWeight(int weight) {
+    public void setWeight(String weight) {
         this.weight = weight;
     }
 
-    public int getArmInches() {
+    public String getArmInches() {
         return armInches;
     }
 
-    public void setArmInches(int armInches) {
+    public void setArmInches(String armInches) {
         this.armInches = armInches;
     }
 
-    public int getWaistInches() {
+    public String getWaistInches() {
         return waistInches;
     }
 
-    public void setWaistInches(int waistInches) {
+    public void setWaistInches(String waistInches) {
         this.waistInches = waistInches;
     }
 
-    public int getChestInches() {
+    public String getChestInches() {
         return chestInches;
     }
 
-    public void setChestInches(int chestInches) {
+    public void setChestInches(String chestInches) {
         this.chestInches = chestInches;
     }
 
-    public int getThighInches() {
+    public String getThighInches() {
         return thighInches;
     }
 
-    public void setThighInches(int thighInches) {
+    public void setThighInches(String thighInches) {
         this.thighInches = thighInches;
     }
 
